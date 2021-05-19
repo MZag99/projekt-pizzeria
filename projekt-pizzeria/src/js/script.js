@@ -58,8 +58,11 @@
       thisProduct.id = id,
       thisProduct.data = data,
       thisProduct.renderInMenu();
+      thisProduct.getElements();
       console.log('new Product:', thisProduct);
       thisProduct.initAccordion();
+      thisProduct.initOrderForm();
+      thisProduct.processOrder();
     }
     renderInMenu(){
       const thisProduct = this;
@@ -73,23 +76,81 @@
       //add element to menu
       menuContainer.appendChild(thisProduct.element);
     }
+    getElements(){
+      const thisProduct = this;
+    
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+    }
     initAccordion(){
       const thisProduct = this;
-      const clickableTrigger = thisProduct.element.querySelector('.product__header');
-      clickableTrigger.addEventListener('click', function(event){
+      thisProduct.accordionTrigger.addEventListener('click', function(event){
       /* prevent default action for event */
         event.preventDefault();
       /* find active product (product that has active class) */
-        const activeProduct = document.querySelector('.active');
+        const activeProduct = document.querySelector('.product.active');
+      // toggle active class of clicked element
+        thisProduct.element.classList.toggle('active');  
       /* if there is active product and it's not thisProduct.element, remove class active from it */
         if(activeProduct != thisProduct.element){
           activeProduct.classList.remove('active');
         }
-      /* toggle active class on thisProduct.element */
-        thisProduct.element.classList.toggle('active');
       });
     }
+    initOrderForm(){
+      const thisProduct = this;
+      thisProduct.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
+      
+      for(let input of thisProduct.formInputs){
+        input.addEventListener('change', function(){
+          thisProduct.processOrder();
+        });
+      }
+      
+      thisProduct.cartButton.addEventListener('click', function(event){
+        event.preventDefault();
+        thisProduct.processOrder();
+      });
+      console.log('initOrderForm');
+    }
+    processOrder(){
+      const thisProduct = this;
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formData:', formData);
+
+      let price = thisProduct.data.price;
+
+      for(let paramId in thisProduct.data.params){
+        const param = thisProduct.data.params[paramId];
+        // for every option in this category
+        for(let optionId in param.options) {
+          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+          const option = param.options[optionId];
+          console.log(paramId,param);
+
+          if(formData[paramId].includes(optionId)){
+            if(!option.hasOwnProperty('default')){
+              price = price + option.price;
+            }
+          }
+          else if(!formData[paramId].includes(optionId)){
+            if(option.hasOwnProperty('default')){
+              price = price - option.price;
+            }
+          }
+        }
+        
+      // update calculated price in the HTML
+      thisProduct.priceElem.innerHTML = price;
+    }
   }
+}
 
   const app = {
     initMenu: function(){
