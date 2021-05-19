@@ -84,6 +84,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
     initAccordion(){
       const thisProduct = this;
@@ -123,29 +124,33 @@
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData:', formData);
-
       let price = thisProduct.data.price;
-
       for(let paramId in thisProduct.data.params){
         const param = thisProduct.data.params[paramId];
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log(paramId,param);
-
+          const optionImg = thisProduct.element.querySelector('img.' + paramId + '-' + optionId);
+          console.log(optionImg);
           if(formData[paramId].includes(optionId)){
+            if(optionImg != null){
+              optionImg.classList.add('active');
+            }
+            //optionImg.classList.add('active');
             if(!option.hasOwnProperty('default')){
               price = price + option.price;
             }
           }
           else if(!formData[paramId].includes(optionId)){
+            if(optionImg != null){
+              optionImg.classList.remove('active');
+            }
             if(option.hasOwnProperty('default')){
               price = price - option.price;
             }
           }
         }
-        
       // update calculated price in the HTML
       thisProduct.priceElem.innerHTML = price;
     }
