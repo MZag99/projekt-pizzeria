@@ -361,7 +361,7 @@
         totalNumber:thisCart.dom.totalNumber.innerHTML,
         deliveryFee:thisCart.dom.deliveryFee.innerHTML,
         products:[]
-      }
+      };
       for(let prod of thisCart.products){
         payload.products.push(prod.getData());
       }
@@ -373,11 +373,12 @@
         body: JSON.stringify(payload) 
       };
       fetch(url, options)
-      .then(function(response){
-        return response.json();
-      }).then (function(parsedResponse){
-        console.log('parsedResponse: ', parsedResponse);
-      });
+        .then(function(response){
+          return response.json();
+        }).then (function(parsedResponse){
+          console.log('parsedResponse: ', parsedResponse);
+        })
+        .catch(error => console.error(error));
     }
     update(){
       const thisCart = this;
@@ -440,7 +441,7 @@
         priceSingle: thisCartProduct.priceSingle,
         name: thisCartProduct.name,
         params: thisCartProduct.params
-      }
+      };
       return orderData;
     }
     getElements(element){
@@ -520,7 +521,8 @@
           thisApp.data.products = parsedResponse;
           //execute initMenu method
           thisApp.initMenu();
-        });
+        })
+        .catch(error => console.error(error));
       console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
     init: function () {
