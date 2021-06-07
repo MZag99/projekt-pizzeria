@@ -52,13 +52,13 @@ class Product {
   }
   addToCart(){
     const thisProduct = this;
-    //const preparedObj = thisProduct.prepareCartProduct();
+    const preparedObj = thisProduct.prepareCartProduct();
     //app.cart.add(preparedObj);
   
     const event = new CustomEvent('add-to-cart',{
       bubbles:true,
       detail:{
-        product:thisProduct,
+        product:thisProduct.prepareCartProduct(),
       },
     });
     thisProduct.element.dispatchEvent(event);

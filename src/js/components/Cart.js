@@ -12,7 +12,6 @@ class Cart{
     console.log('New Cart',thisCart);
   }
   add(menuProduct){
-    console.log('dupaaaaa');
     const thisCart = this;
     const generatedHTML = templates.cartProduct(menuProduct);
 
