@@ -88,12 +88,19 @@ const app = {
       .catch(error => console.error(error));
     console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
+  initBooking: function(){
+    const thisApp = this;
+
+    const bookingContainer = document.querySelector(select.containerOf.booking);
+    new Booking(bookingContainer);
+  },
   init: function () {
     const thisApp = this;
 
     thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
+    thisApp.initBooking();
   },
 };
 

@@ -52,7 +52,7 @@ class Product {
   }
   addToCart(){
     const thisProduct = this;
-    const preparedObj = thisProduct.prepareCartProduct();
+    
     //app.cart.add(preparedObj);
   
     const event = new CustomEvent('add-to-cart',{
