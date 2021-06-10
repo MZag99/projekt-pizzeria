@@ -98,13 +98,13 @@ export const settings = {
   hours: {
     open: 12,
     close: 24,
-},
-datePicker: {
+  },
+  datePicker: {
     maxDaysInFuture: 14,
-},
-booking: {
+  },
+  booking: {
     tableIdAttribute: 'data-table',
-},
+  },
   amountWidget: {
     defaultValue: 1,
     defaultMin: 1,
