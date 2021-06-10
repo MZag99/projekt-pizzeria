@@ -8,9 +8,9 @@ class BaseWidget {
     thisWidget.correctValue = initialValue;
   }
   get value(){
-      const thisWidget = this;
+    const thisWidget = this;
 
-      return thisWidget.correctValue;
+    return thisWidget.correctValue;
   }
   set value(value) {
     const thisWidget = this;
@@ -43,9 +43,9 @@ class BaseWidget {
     thisWidget.dom.wrapper.dispatchEvent(event);
   }
   setValue(value){
-      const thisWidget = this;
+    const thisWidget = this;
       
-      thisWidget.value = value;
+    thisWidget.value = value;
   }
     
 }

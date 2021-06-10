@@ -208,7 +208,7 @@
     "events": [
       {
         "id": 1,
-        "date": "2021-01-01",
+        "date": "2021-06-13",
         "hour": "12:30",
         "table": 1,
         "repeat": false,
@@ -224,7 +224,7 @@
         "repeat": "daily",
         "duration": 2,
         "ppl": 3,
-        "starters": ["bread", "lemonWater"]
+        "starters": ["bread", "Water"]
       },
       {
         "id": 3,
@@ -234,7 +234,7 @@
         "repeat": "daily",
         "duration": 2,
         "ppl": 3,
-        "starters": ["bread", "lemonWater"]
+        "starters": ["bread", "Water"]
       },
       {
         "id": 4,
@@ -254,8 +254,18 @@
         "repeat": "daily",
         "duration": 2,
         "ppl": 3,
-        "starters": ["lemonWater"]
+        "starters": ["Water"]
       }
     ],
-    "bookings": []
+    "bookings": [
+       {
+          "id": 1,
+          "date": "2021-06-15",
+          "hour": "16:00",
+          "table": 1,
+          "duration": 3,
+          "ppl": 4,
+          "starters": ["water"]         
+       }
+    ]
  }

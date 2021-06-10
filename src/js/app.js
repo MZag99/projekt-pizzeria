@@ -50,8 +50,6 @@ const app = {
   initMenu: function () {
     const thisApp = this;
 
-    console.log('thisApp.data: ', thisApp.data);
-
     for (let productData in thisApp.data.products) {
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
@@ -86,7 +84,6 @@ const app = {
         thisApp.initMenu();
       })
       .catch(error => console.error(error));
-    console.log('thisApp.data', JSON.stringify(thisApp.data));
   },
   initBooking: function(){
     const thisApp = this;
