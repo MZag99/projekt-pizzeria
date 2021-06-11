@@ -1,4 +1,4 @@
-import {settings, select, classNames, templates} from './settings.js';
+import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
@@ -76,7 +76,7 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse){
-        console.log('parsedResponse', parsedResponse);
+        //console.log('parsedResponse', parsedResponse);
 
         //save parsedResponse as thisApp.data.products
         thisApp.data.products = parsedResponse;
@@ -86,8 +86,6 @@ const app = {
       .catch(error => console.error(error));
   },
   initBooking: function(){
-    const thisApp = this;
-
     const bookingContainer = document.querySelector(select.containerOf.booking);
     new Booking(bookingContainer);
   },

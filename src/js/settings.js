@@ -1,5 +1,5 @@
-export const select = {
-  widgets: {
+export const select = { /* eslint-disable no-dupe-keys*/
+  widget: {
     datePicker: {
       wrapper: '.date-picker',
       input: `input[name="date"]`,
@@ -14,6 +14,7 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    floor: '.floor-plan',
   },
   nav: {
     links: '.main-nav a',
@@ -76,6 +77,7 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tablePicked: 'picked',
   },
   nav: {
     active: 'active',
