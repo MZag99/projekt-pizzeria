@@ -175,17 +175,17 @@
     }
 
     &.picked {
-      color:darken($color-success,30%);
+      color: darken($color-success,30%);
       
       &::after {
-        position:absolute;
+        position: absolute;
         content: '';
-        width:100%;
-        height:100%;
-        left:0;
-        top:0;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
         background: darken($color-success,30%);
-        opacity:0.4;
+        opacity: 0.4;
       }
     }
   }

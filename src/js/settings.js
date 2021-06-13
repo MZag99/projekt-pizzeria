@@ -15,6 +15,10 @@ export const select = { /* eslint-disable no-dupe-keys*/
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
     floor: '.floor-plan',
+    submit: '.order-confirmation .btn-secondary',
+    tel: '.order-confirmation input[type="tel"]',
+    address: '.order-confirmation input[type="text"]',
+    starters: 'input[type="checkbox"]',
   },
   nav: {
     links: '.main-nav a',
