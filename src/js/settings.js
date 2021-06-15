@@ -21,7 +21,7 @@ export const select = { /* eslint-disable no-dupe-keys*/
     starters: 'input[type="checkbox"]',
   },
   nav: {
-    links: '.main-nav a , .choose-tile a',
+    links: '.main-nav a , .choose-tile a', //change
   },
   templateOf: {
     menuProduct: '#template-menu-product',
@@ -117,7 +117,7 @@ export const settings = {
     defaultMax: 9,
   },
   db: {
-    url: '//localhost:3131',
+    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
     products: 'products',
     orders: 'orders',
     product: 'product',
