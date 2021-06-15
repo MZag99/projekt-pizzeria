@@ -3,12 +3,13 @@ import BaseWidget from './BaseWidget.js';
 
 class AmountWidget extends BaseWidget{
   constructor(element) {
-    super(element,settings.amountWidget.defaultValue);
+    super(element, settings.amountWidget.defaultValue);
 
     const thisWidget = this;
 
     thisWidget.getElements(element);
     thisWidget.initActions();
+    thisWidget.renderValue();
   }
   getElements() {
     const thisWidget = this;

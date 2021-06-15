@@ -109,10 +109,10 @@ class Booking {
       ppl: thisBooking.peopleAmount.value,
       starters: thisBooking.starters,
       phone: thisBooking.dom.phone.value,
-       address:thisBooking.dom.address.value,
-     };
+      address:thisBooking.dom.address.value,
+    };
 
-     const options = { 
+    const options = { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ class Booking {
       .then(function(response){
         return response.json();
       }).then (function(parsedResponse){
-        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table)
+        thisBooking.makeBooked(parsedResponse.date, parsedResponse.hour, parsedResponse.duration, parsedResponse.table);
       })
       .catch(error => console.error(error));
 
