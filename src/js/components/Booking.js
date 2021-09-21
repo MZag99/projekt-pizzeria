@@ -95,7 +95,7 @@ class Booking {
   sendBooking() {
     const thisBooking = this;
 
-    const url = settings.db.url + '/' + settings.db.booking;
+    //const url = settings.db.url + '/' + settings.db.booking;
 
     if(typeof thisBooking.pickedTables == 'undefined' || thisBooking.checkTable() === null){
       alert('Wybierz stolik!');
@@ -120,7 +120,7 @@ class Booking {
       body: JSON.stringify(payload) 
     };
 
-    fetch(url, options)
+    fetch('https://json-static-api9.netlify.app/', options)
       .then(function(response){
         return response.json();
       }).then (function(parsedResponse){
